@@ -1,22 +1,24 @@
 import sys
 
-def addTask(task_to_add, due_date):
+def addTask(task_to_add: str, due_date: str):
     with open("weekly_planner.txt", "w") as infile:   
-        infile.write(f"{task_to_add}, ", end = "")
-        infile.writelines(f"Due:{due_date}\n")
-
+        infile.write(f"{task_to_add}, Due: {due_date}\n")
+        print(f"Task:{task_to_add} has been added!")
     return addTask
     
 
 def deleteTask(task_to_delete):
     with open("weekly_planner.txt", "r") as r:
-        lines = a.readlines()
-    with open("weekly_planner.txt", "w") as a:
+        lines = r.readlines()
+    with open("weekly_planner.txt", "w") as w:
         for row in lines:
             if row.find(task_to_delete) != -1:
-                a.write(row)
+                w.write("")
+                print("your task has been deleted")
+                return
             else:
                 print("please check you entered the task name and due data exactly, and try again")
+                return
                 
 active = True 
 while active == True:
@@ -26,7 +28,7 @@ while active == True:
         due_date = input("please enter the task due date")
         addTask(task_to_add, due_date)
     elif decision == "2":
-        task_to_delete = input("please enter the exact name of the task and its due data, if you cannot remeber the name, restart the program and chose view planner to find the name")
+        task_to_delete = input("please enter the exact name of the task and its due data, if you cannot remember the name, restart the program and chose view planner to find the name")
         deleteTask(task_to_delete)
     elif decision == "3":
         with open ("weekly_planner.txt", "r") as f:
