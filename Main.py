@@ -1,4 +1,23 @@
 import sys
+
+def addTask(task_to_add, due_date):
+    with open("weekly_planner.txt", "w") as infile:   
+        infile.write(f"{task_to_add}, ", end = "")
+        infile.writelines(f"Due:{due_date}\n")
+
+    return addTask
+    
+
+def deleteTask(task_to_delete):
+    with open("weekly_planner.txt", "r") as r:
+        lines = a.readlines()
+    with open("weekly_planner.txt", "w") as a:
+        for row in lines:
+            if row.find(task_to_delete) != -1:
+                a.write(row)
+            else:
+                print("please check you entered the task name and due data exactly, and try again")
+                
 active = True 
 while active == True:
     decision = input("Welcome to your weekly planner! Please enter 1 to add a task, enter 2 to delete a task, 3 to view your diary or 4 to exit the program")
@@ -7,22 +26,15 @@ while active == True:
         due_date = input("please enter the task due date")
         addTask(task_to_add, due_date)
     elif decision == "2":
-        task_to_delete = input("please enter the exact name of the task, if you cannot remeber the name, restart the program and chose view planner to find the name")
+        task_to_delete = input("please enter the exact name of the task and its due data, if you cannot remeber the name, restart the program and chose view planner to find the name")
         deleteTask(task_to_delete)
     elif decision == "3":
         with open ("weekly_planner.txt", "r") as f:
             print(f.read())
     elif decision == "4":
+        active = False
         sys.exit("see you next time :)")
     else:
-        sys.exit("please restart, and enter one of the options given")
-
-
-def addTask(task_to_add, due_date):{
-
-}
-    
-def deleteTask(task_to_delete):{
-
-}
+        print("please restart, and enter one of the options given")
+  
     
