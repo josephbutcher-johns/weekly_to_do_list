@@ -16,9 +16,7 @@ def deleteTask(task_to_delete):
                 w.write("")
                 print("your task has been deleted")
                 return
-            else:
-                print("please check you entered the task name and due data exactly, and try again")
-                return
+            print("enter the task and due date in the exact format.")
                 
 active = True 
 while active == True:
